@@ -1,4 +1,4 @@
-module Epaybg
+module Fastpaybg
   class Response
     attr_accessor :encoded, :checksum
 
@@ -17,7 +17,7 @@ module Epaybg
     end
 
     def valid? secret
-      Epaybg.hmac(@encoded, secret) == @checksum
+      Fastpaybg.hmac(@encoded, secret) == @checksum
     end
 
     def status
@@ -35,7 +35,7 @@ module Epaybg
     def bcode
       to_hash['BCODE'] if status == 'PAID'
     end
-    
+
     def stan
       to_hash["STAN"] if status == "PAID"
     end

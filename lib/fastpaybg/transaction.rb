@@ -1,6 +1,6 @@
 require 'net/http'
 
-module Epaybg
+module Fastpaybg
   class Transaction
     attr_accessor :url, :url_idn, :invoice, :amount, :expires_on,
                   :description, :encoding, :url_ok, :url_cancel, :min, :secret
@@ -30,7 +30,7 @@ DESCR=#{self.description}
     end
 
     def checksum
-      Epaybg.hmac(encoded, secret)
+      Fastpaybg.hmac(encoded, secret)
     end
 
     def register_payment
@@ -64,11 +64,11 @@ DESCR=#{self.description}
     end
 
     def set_defaults!
-      @url ||= Epaybg.config['url']
-      @url_idn ||= Epaybg.config['url_idn']
+      @url ||= Fastpaybg.config['url']
+      @url_idn ||= Fastpaybg.config['url_idn']
       @encoding ||= 'utf-8'
-      @min ||= Epaybg.config['min']
-      @secret ||= Epaybg.config['secret']
+      @min ||= Fastpaybg.config['min']
+      @secret ||= Fastpaybg.config['secret']
     end
   end
 end

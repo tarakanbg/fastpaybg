@@ -1,4 +1,4 @@
-module Epaybg
+module Fastpaybg
   module ViewHelpers
     def link_base(p, action, image = '')
       link_to image_tag(image), "#{p.url}/?PAGE=#{action}&ENCODED=#{p.encoded}&CHECKSUM=#{p.checksum}&URL_OK=#{p.url_ok}&URL_CANCEL=#{p.url_cancel}"

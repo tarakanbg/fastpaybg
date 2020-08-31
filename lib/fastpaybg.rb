@@ -1,10 +1,9 @@
-require 'epaybg/railtie' if defined?(Rails)
-require 'epaybg/transaction'
-require 'epaybg/response'
-require 'epaybg/version'
-require 'epaybg/recurring'
+require 'fastpaybg/railtie' if defined?(Rails)
+require 'fastpaybg/transaction'
+require 'fastpaybg/response'
+require 'fastpaybg/version'
 
-module Epaybg
+module Fastpaybg
   class << self
     def hmac(data, secret)
       OpenSSL::HMAC.hexdigest('sha1', secret, data)
@@ -18,7 +17,7 @@ module Epaybg
 
     def mode=(mode)
       valid = [:test, :production]
-      raise ArgumentError, "#{mode} is not a valid mode for Epaybg.
+      raise ArgumentError, "#{mode} is not a valid mode for Fastpaybg.
         Valid modes are #{valid}." unless valid.include?(mode)
       @@mode = mode
     end
